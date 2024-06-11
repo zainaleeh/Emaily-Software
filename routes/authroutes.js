@@ -14,7 +14,7 @@ module.exports= app => {
 
   app.get('/api/logout', (req, res) => {
     req.logout();//kills the id with the specific cookie hence logs out
-    res.send(req.user);
+    res.send(req.user); //removes the user who logged out
 
   });
   // handler to handle cookie requests, give back the user id for the person who is already logged in
