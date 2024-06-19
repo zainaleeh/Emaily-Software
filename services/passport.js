@@ -29,20 +29,17 @@ passport.use(new GoogleStrategy({
   callbackURL: '/auth/google/callback', //route user takes after getting verified by google
   proxy: true
 }, 
-(accessToken, refreshToken, profile, done) => {
-  User.findOne({ googleId: profile.id }).then((existingUser) => {//query
-      if (existingUser){
+async (accessToken, refreshToken, profile, done) => {
+  const existingUser = await User.findOne({ googleId: profile.id });
+    
+  if (existingUser){
         //we already have a record with the given profile
-        done(null, existingUser,);
+    done(null, existingUser,);
       } 
-      else {
         //we don't have a user record with this ID, make a new record
-        new User({ googleId: profile.id}).save()
-          .then(user => done(null,user));
+    const user = await new User({ googleId: profile.id}).save();
+    done(null,user);
       }
       
-    });
-  
-  
-})
+)
 ); //we specify our strategy of auth here
