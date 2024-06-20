@@ -10,11 +10,17 @@ module.exports= app => {
   );
 
   //google callback handler
-  app.get('/auth/google/callback', passport.authenticate('google'));
+  app.get(
+    '/auth/google/callback', 
+    passport.authenticate('google'),
+    (req, res) => {
+      res.redirect('/surveys')
+    }
+    );
 
   app.get('/api/logout', (req, res) => {
     req.logout();//kills the id with the specific cookie hence logs out
-    res.send(req.user); //removes the user who logged out
+    res.redirect('/') //redirects the user to main page
 
   });
   // handler to handle cookie requests, give back the user id for the person who is already logged in
