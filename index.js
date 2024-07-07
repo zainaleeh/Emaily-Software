@@ -29,10 +29,21 @@ app.use(passport.session());
 require('./routes/authroutes')(app);
 require('./routes/billingRoutes')(app);
 
+if (process.env.NODE_ENV === 'production'){
+  //Express will serve up production assets
+  //like our main.js file, or main.css file
+
+  app.use(express.static('client/build'));
+
+  //express will serve up the index.html file
+  //if it does't recognize the route
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolver(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT); 
 
-// Client id: 679608112978-nb3a9iadj5d93mmmtnm7tfmashv03pov.apps.googleusercontent.com
-
-//Client secret: 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
