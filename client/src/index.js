@@ -11,6 +11,10 @@ import { thunk } from 'redux-thunk'; // Correct import as named export
 import App from './components/app';
 import reducers from './reducers';
 
+//dev only axios helpers
+import axios from 'axios';
+window.axios = axios;
+
 const store = createStore(reducers, {}, applyMiddleware(thunk));
 
 // 3) Get a reference to the div with ID root
