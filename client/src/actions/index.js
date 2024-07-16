@@ -1,6 +1,6 @@
 //axios handles the api requests
 import axios from 'axios';
-import { FETCH_USER } from './types';
+import { FETCH_USER, FETCH_SURVEYS } from './types';
 
 //this is an action creator to check where user is signed in or not
 //action creator returns an action which is dispatch in this case which contains the user information (NULL OR VALID) 
@@ -22,4 +22,9 @@ export const submitSurvey = (values, history) => async dispatch => {
   };
   
   
+export const fetchSurveys = () => async dispatch => {
+    const res = await axios.get('/api/surveys');
+
+    dispatch({ type: FETCH_SURVEYS, payload: res.data});
+};
 
