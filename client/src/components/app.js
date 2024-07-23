@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'; 
-import {connect} from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 //brouseRouter is the brain of the router
@@ -15,22 +15,22 @@ import SurveyNew from './surveys/SurveyNew';
 
 
 class App extends Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchUser(); //we're calling action creater here
 
   }
-  render(){
+  render() {
     return (
-      <div className = "container">
+      <div className="container">
         <BrowserRouter>
           <div>
-            <Header/>
-            <Route exact path = "/" component ={Landing}/> 
-            <Route exact path = "/surveys" component ={Dashboard}/>
-            <Route path = "/surveys/new" component ={SurveyNew}/>
+            <Header />
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/surveys" component={Dashboard} />
+            <Route path="/surveys/new" component={SurveyNew} />
           </div>
-        
-        
+
+
         </BrowserRouter>
       </div>
 
