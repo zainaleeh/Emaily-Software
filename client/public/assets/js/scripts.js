@@ -28,18 +28,18 @@ Version      : 1.0
 			closedSymbol: "&#9658;"
 		});
 
-		// if ($(window).scrollTop() > 200) {
-		// 	$('.fixed-top').addClass('menu-bg');
-		// } else {
-		// 	$('.fixed-top').removeClass('menu-bg');
-		// }
-		// $(window).on('scroll', function () {
-		// 	if ($(window).scrollTop() > 70) {
-		// 		$('.site-navigation, .header-white, .header').addClass('navbar-fixed');
-		// 	} else {
-		// 		$('.site-navigation, .header-white, .header').removeClass('navbar-fixed');
-		// 	}
-		// });
+		if ($(window).scrollTop() > 200) {
+			$('.fixed-top').addClass('menu-bg');
+		} else {
+			$('.fixed-top').removeClass('menu-bg');
+		}
+		$(window).on('scroll', function () {
+			if ($(window).scrollTop() > 70) {
+				$('.site-navigation, .header-white, .header').addClass('navbar-fixed');
+			} else {
+				$('.site-navigation, .header-white, .header').removeClass('navbar-fixed');
+			}
+		});
 		/*END MENU JS*/
 
 		/*START PROGRESS BAR*/

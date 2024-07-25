@@ -11,6 +11,7 @@ import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
+import Loader from './Loader';
 
 
 
@@ -23,6 +24,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
+          <Loader/>
           <Header />
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={Dashboard} />

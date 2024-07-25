@@ -22,25 +22,23 @@ class Header extends Component {
     render() {
         console.log(this.props);
         return (
-            <div id="navigation" className={`fixed-top navbar-light bg-faded site-navigation p-0 mb-2`}>
-                <div className='bg-white'>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-2 col-md-3 col-sm-4">
-                                <div className="site-logo">
-                                    {/* <Link to={this.props.auth ? '/surveys' : '/'}>Emaily </Link> */}
-                                    <Link to={this.props.auth ? '/surveys' : '/'}><img src={`${process.env.PUBLIC_URL}/assets/img/logo.png`} alt=""></img></Link>
-                                </div>
+            <div id="navigation" className={`fixed-top navbar-light bg-faded site-navigation`}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-2 col-md-3 col-sm-4">
+                            <div className="site-logo">
+                                {/* <Link to={this.props.auth ? '/surveys' : '/'}>Emaily </Link> */}
+                                <Link to={this.props.auth ? '/surveys' : '/'}><img src={`${process.env.PUBLIC_URL}/assets/img/logo.png`} alt=""></img></Link>
                             </div>
-                            <div className="col-lg-10 col-md-9 col-sm-8">
-                                <div className="header_right ">
-                                    <dev id="main-menu" className="ml-auto">
-                                        <ul>
-                                            {this.renderContent()}
-                                        </ul>
-                                    </dev>
-                                    <div id="mobile_menu"></div>
-                                </div>
+                        </div>
+                        <div className="col-lg-10 col-md-9 col-sm-8">
+                            <div className="header_right ">
+                                <dev id="main-menu" className="ml-auto">
+                                    <ul>
+                                        {this.renderContent()}
+                                    </ul>
+                                </dev>
+                                <div id="mobile_menu"></div>
                             </div>
                         </div>
                     </div>
