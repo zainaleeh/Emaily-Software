@@ -22,16 +22,16 @@ class Header extends Component {
     render() {
         console.log(this.props);
         return (
-            <div class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-sm-6 col-xs-12">
-                            <div class="footer_copyright">
+            <div className="footer">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 col-sm-6 col-xs-12">
+                            <div className="footer_copyright">
                                 <p>&copy; 2024. All Rights Reserved.</p>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-sm-6 col-xs-12">
-                            <div class="footer_menu">
+                        <div className="col-lg-6 col-sm-6 col-xs-12">
+                            <div className="footer_menu">
                                 <ul>
                                     <li><a href="#">TW</a></li>
                                     <li><a href="#">FB</a></li>

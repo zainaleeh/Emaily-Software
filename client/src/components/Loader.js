@@ -9,10 +9,10 @@ class Header extends Component {
     }
     render() {
         return (
-            <div class="preloader">
-                <div class="spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
+            <div className="preloader">
+                <div className="spinner">
+                    <div className="double-bounce1"></div>
+                    <div className="double-bounce2"></div>
                 </div>
             </div>
         );
