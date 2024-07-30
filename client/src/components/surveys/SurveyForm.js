@@ -12,7 +12,7 @@ class SurveyForm extends Component {
             return (
                 <Field
                     key={name}
-                    component={SurveyField}
+                    component={SurveyField} // This component should be styled to match your theme
                     type="text"
                     label={label}
                     name={name}
@@ -26,32 +26,21 @@ class SurveyForm extends Component {
             <div class="contact_area section-padding">
                 <div class="container">
                     <div class="section-title-two">
-                        <h2>Send your message.</h2>
+                        <h2>Create Your Survey</h2>
                     </div>
                     <div class="row">
                         <div class="offset-lg-1 col-lg-10 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
                             <div class="contact">
-                                <form class="form" name="enq" method="post" action="contact.php" onsubmit="return validation();">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label>Name</label>
-                                            <input type="text" name="name" class="form-control" placeholder="Your Name" required="required"></input>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label>Your Email</label>
-                                            <input type="email" name="email" class="form-control" placeholder="Your Email" required="required"></input>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label>Your Subject</label>
-                                            <input type="text" name="subject" class="form-control" placeholder="Subject" required="required"></input>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label>Your Message</label>
-                                            <textarea rows="6" name="message" class="form-control" placeholder="Your Message" required="required"></textarea>
-                                        </div>
-                                        <div class="col-md-12 text-center">
-                                            <button type="submit" value="Send message" name="submit" id="submitButton" class="home_btn" title="Submit Your Message!">Send Message</button>
-                                        </div>
+                                <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)} className="form">
+                                    {this.renderFields()}
+                                    <div className="col-md-12 text-center">
+                                        <Link to="/surveys" className="btn-flat red white-text">
+                                            Cancel
+                                        </Link>
+                                        <button type="submit" className="btn-flat teal right white-text">
+                                            Next
+                                            <i className="material-icons right">done</i>
+                                        </button>
                                     </div>
                                 </form>
                             </div>
@@ -63,7 +52,7 @@ class SurveyForm extends Component {
     }
 }
 
-//we're validating the inputs here
+// Validation function
 function validate(values) {
     const errors = {};
 
@@ -76,6 +65,7 @@ function validate(values) {
     errors.recipients = validEmails(values.recipients || '');
     return errors;
 }
+
 export default reduxForm({
     validate,
     form: 'surveyForm',
