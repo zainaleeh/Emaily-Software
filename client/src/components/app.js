@@ -8,26 +8,31 @@ import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
-import AIGenerator from './AIGenerator'; // Make sure the path is correct
+import AIGenerator from './AIGenerator';
+
+
 
 class App extends Component {
   componentDidMount(){
-    this.props.fetchUser(); // Calling action creator to fetch user data
-  }
+    this.props.fetchUser(); //we're calling action creater here
 
+  }
   render(){
     return (
-      <div className="container">
+      
         <BrowserRouter>
           <div>
-            <Header />
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/surveys" component={Dashboard} />
-            <Route path="/surveys/new" component={SurveyNew} />
-            <Route path="/ai-generator" component={AIGenerator} /> {/* New Route for AI Generator */}
+            <Header/>
+            <Route exact path = "/" component ={Landing}/> 
+            <Route exact path = "/surveys" component ={Dashboard}/>
+            <Route path = "/surveys/new" component ={SurveyNew}/>
+            <Route path="/ai-generator" component={AIGenerator} />
           </div>
+        
+        
         </BrowserRouter>
-      </div>
+      
+
     );
   }
 };
