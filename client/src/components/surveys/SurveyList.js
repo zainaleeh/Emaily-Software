@@ -3,43 +3,51 @@ import { connect } from 'react-redux';
 import { fetchSurveys } from '../../actions';
 
 class SurveyList extends Component {
-  componentDidMount() {
-    this.props.fetchSurveys();
-  }
+    componentDidMount() {
+        this.props.fetchSurveys();
+    }
 
-  renderSurveys() {
-    return this.props.surveys.reverse().map(survey => {
-      return (
-        <div className="card darken-1" key={survey._id}>
-          <div className="card-content">
-            <span className="card-title">{survey.title}</span>
-            <p>
-              {survey.body}
-            </p>
-            <p className="right">
-              Sent On: {new Date(survey.dateSent).toLocaleDateString()}
-            </p>
-          </div>
-          <div className="card-action">
-            <a>Yes: {survey.yes}</a>
-            <a>No: {survey.no}</a>
-          </div>
-        </div>
-      );
-    });
-  }
+    renderSurveys() {
+        return this.props.surveys.reverse().map(survey => {
+            return (
+                <div class="col-md-6 col-sm-12 col-xs-12" key={survey._id}>
+                    <div class="single_feature_one">
+                        <div class="sf_top">
+                            <h2 className='mt-0'><a href="#" data-bs-toggle="modal" data-bs-target="#serviceModal6">{survey.title}</a>
+                            </h2>
+                        </div>
+                        <p>{survey.body}
+                        </p>
 
-  render() {
-    return (
-      <div>
-        {this.renderSurveys()}
-      </div>
-    );
-  }
+                        <hr></hr>
+                        <div className='d-flex justify-content-between'>
+                            <div className='me-4'>
+                                <i class="fa fa-check" aria-hidden="true"></i> : {survey.yes}
+                            </div>
+                            <div>
+                                <i class="fa fa-times" aria-hidden="true"></i> : {survey.no}
+                            </div>
+                            <p className="">
+                                Sent On: {new Date(survey.dateSent).toLocaleDateString()}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            );
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                {this.renderSurveys()}
+            </div>
+        );
+    }
 }
 
 function mapStateToProps({ surveys }) {
-  return { surveys };
+    return { surveys };
 }
 
 export default connect(mapStateToProps, { fetchSurveys })(SurveyList);
