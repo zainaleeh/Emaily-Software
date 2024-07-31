@@ -25,7 +25,7 @@ class SurveyForm extends Component {
         return (
             <div class="contact_area section-padding">
                 <div class="container">
-                    <div class="section-title-two">
+                    <div class="section-title-two mt-5 mb-3">
                         <h2>Create Your Survey</h2>
                     </div>
                     <div class="row">
@@ -33,13 +33,14 @@ class SurveyForm extends Component {
                             <div class="contact">
                                 <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)} className="form">
                                     {this.renderFields()}
-                                    <div className="col-md-12 text-center">
-                                        <Link to="/surveys" className="btn-flat red white-text">
+                                    <div className="col-md-12 d-flex justify-content-between">
+                                        <Link to="/surveys" className="btn back_btn">
+                                            <i class="fa fa-chevron-circle-left me-2" aria-hidden="true"></i>
                                             Cancel
                                         </Link>
-                                        <button type="submit" className="btn-flat teal right white-text">
+                                        <button type="submit" className="btn home_btn">
                                             Next
-                                            <i className="material-icons right">done</i>
+                                            <i class="fa fa-chevron-circle-right ms-2" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </form>

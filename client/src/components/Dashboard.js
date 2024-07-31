@@ -6,9 +6,7 @@ const Dashboard = () => {
     return (
         <section id="service" class="marketing_content_area section-padding">
             <div class="container">
-                <div class="row mt-2">
-                    <SurveyList />
-                </div>
+                <SurveyList />
             </div>
             <div className="fixed-action-btn">
                 <Link to="/surveys/new" className="btn-floating btn-large">

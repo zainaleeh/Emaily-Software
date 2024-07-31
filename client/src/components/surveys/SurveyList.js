@@ -11,7 +11,7 @@ class SurveyList extends Component {
         return this.props.surveys.reverse().map(survey => {
             return (
                 <div class="col-md-6 col-sm-12 col-xs-12" key={survey._id}>
-                    <div class="single_feature_one">
+                    <div class="single_feature_one" >
                         <div class="sf_top">
                             <h2 className='mt-0'><a href="#" data-bs-toggle="modal" data-bs-target="#serviceModal6">{survey.title}</a>
                             </h2>
@@ -39,7 +39,7 @@ class SurveyList extends Component {
 
     render() {
         return (
-            <div>
+            <div class="row mt-2">
                 {this.renderSurveys()}
             </div>
         );

@@ -9,29 +9,31 @@ import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
 import AIGenerator from './AIGenerator';
+import Loader from './Loader';
 
 
 
 class App extends Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchUser(); //we're calling action creater here
 
   }
-  render(){
+  render() {
     return (
-      
-        <BrowserRouter>
-          <div>
-            <Header/>
-            <Route exact path = "/" component ={Landing}/> 
-            <Route exact path = "/surveys" component ={Dashboard}/>
-            <Route path = "/surveys/new" component ={SurveyNew}/>
-            <Route path="/ai-generator" component={AIGenerator} />
-          </div>
-        
-        
-        </BrowserRouter>
-      
+
+      <BrowserRouter>
+        <div>
+          <Loader />
+          <Header />
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/surveys" component={Dashboard} />
+          <Route path="/surveys/new" component={SurveyNew} />
+          <Route path="/ai-generator" component={AIGenerator} />
+        </div>
+
+
+      </BrowserRouter>
+
 
     );
   }
