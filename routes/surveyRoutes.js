@@ -17,7 +17,7 @@ const Survey = mongoose.model('surveys');
 module.exports = app => {
 
   //fetching the surveys for each specific user without fetching the recipients
-    app.get('/api/surveys', requireLogin, async (req, res) => {
+  app.get('/api/surveys', requireLogin, async (req, res) => {
     const surveys = await Survey.find({ _user: req.user.id }).select({
       recipients: false,
     });
@@ -25,10 +25,27 @@ module.exports = app => {
     res.send(surveys);
   });
 
-  
+
 
   app.get('/api/surveys/:surveyId/:choice', (req, res) => {
-    res.send('Thanks for voting');
+    res.send(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanks for Voting</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: #f8f9fa; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+
+    <div class="text-center">
+        <h1 class="display-4">Thanks for Voting!</h1>
+        <p class="lead">We appreciate your participation.</p>
+        <a href="/" class="btn mt-3" style="background-color:#2eca7f">Go Back</a>
+    </div>
+
+</body>
+</html>`);
   });
 
   //extracting the valueable information
@@ -67,7 +84,7 @@ module.exports = app => {
 
 
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
-    const {title, subject, body, recipients} = req.body; //this is what user will pass on as a request when coming to api/surveys
+    const { title, subject, body, recipients } = req.body; //this is what user will pass on as a request when coming to api/surveys
 
     // new instance of a survey
     const survey = new Survey({
@@ -81,16 +98,16 @@ module.exports = app => {
 
     //get place to send an email!
     const mailer = new Mailer(survey, surveyTemplate(survey));
-    try{
-    mailer.send();
-    await survey.save();
-    req.user.credits -= 1;
-    const user = await req.user.save(); 
+    try {
+      mailer.send();
+      await survey.save();
+      req.user.credits -= 1;
+      const user = await req.user.save();
 
-    res.send(user);
-  } catch(err) {
-    res.status(422).send(err);
-  }
+      res.send(user);
+    } catch (err) {
+      res.status(422).send(err);
+    }
 
     // try {
     //   await mailer.send(); // Using await here
@@ -100,8 +117,8 @@ module.exports = app => {
     //   console.error('Error sending survey:', error);
     //   res.status(422).send(error);//added code
     // }
- 
-  
+
+
 
   });
 };
